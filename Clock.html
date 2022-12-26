@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Clock with Subjec Midterm Test</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Niramit:wght@300&display=swap');
+      body {
+       
+        font-family: 'Niramit', sans-serif;
+        font-size: 30px;
+        color: #FFFFFF;
+        text-align: center;
+        background-color: black;
+      }
+
+      #clock {
+        font-size: 250px;
+        color: #FFFFFF;
+        text-align: center;
+      }
+      #subjects {
+        font-size: 100px;
+        color: #FFFFFF;
+        text-align: center;
+      }
+      #date {
+        font-size: 90px;
+        color: #FFFFFF;
+        text-align: center;
+      }
+      #subjectsNext {
+        font-size: 70px;
+        color: #FFFFFF;
+        text-align: center;
+      }
+      #heading_create {
+        font-size: 30px;
+        color: #FFFFFF;
+        letter-spacing: 5px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="clock">กำลังโหลดเวลา...</div>
+    <div id="date">กำลังโหลดวันที่...</div>
+    <div id="subjects">กำลังโหลดวิชา...</div>
+    <div id="subjectsNext">กำลังโหลดวิชาต่อไป...</div>
+    <div id="heading_create">Clock with Subjec Midterm Test Create By LAPSBOY</div>
+    <script>
+      function updateClock() {
+        var now = new Date();
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+        var seconds = now.getSeconds();
+        var clockText = '';
+        var subjectsText = '';
+        var heading_createText = '';
+        var nextSub = '';
+
+        if (hours < 10) {
+          clockText += '0';
+        }
+        clockText += hours + ':';
+
+        if (minutes < 10) {
+          clockText += '0';
+        }
+        clockText += minutes + ':';
+
+        if (seconds < 10) {
+          clockText += '0';
+        }
+        clockText += seconds;
+
+        document.getElementById('clock').innerHTML = clockText;
+       
+        var now = new Date();
+        var year = now.getFullYear();
+        var month = now.getMonth() + 1;
+        var day = now.getDate();
+        var monthNames = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"];
+        var dayNames = ["อาทิตย์", "จันทร์", "อังคาร", "พุธ", "พฤหัสบดี", "ศุกร์", "เสาร์"]
+        var dateText = '';
+        
+
+        if (day < 10) {
+          dateText += '0';
+        }
+        dateText += 'วัน' + dayNames[now.getDay()] + ' ที่ ' + day +' ';
+
+        if (month < 10) {
+          dateText += '0';
+        }
+        dateText += monthNames[now.getMonth()] + ' ';
+
+        dateText += year+543;
+
+        document.getElementById('date').innerHTML = dateText;
+
+        if (day == 27 && hours == 8 && minutes >= 30) {
+          subjectsText = '[เวลา 8:30น. - 9:30น. |พ31102 วิชาสุขศึกษา| เวลาทำข้อสอบ 60 นาที]';
+          nextSub = '[วิชาต่อไป] : ส30232 วิชาหน้าที่พลเมือง'
+        } else if (day == 27 && hours == 9 && minutes < 30) {
+          subjectsText = '[เวลา 8:30น. - 9:30น. |พ31102 วิชาสุขศึกษา| เวลาทำข้อสอบ 60 นาที]';
+          nextSub = '[วิชาต่อไป] : ส30232 วิชาหน้าที่พลเมือง'
+        } else if (day == 27 && hours == 9 && minutes >= 30) {
+          subjectsText = '[เวลา 9:30น. - 10:30น. |ส30232 วิชาหน้าที่พลเมือง| เวลาทำข้อสอบ 60 นาที]';
+          nextSub = '[วิชาต่อไป] : ว31206 วิชาฟิสิกส์ 2'
+        } else if (day == 27 && hours == 10 && minutes < 30) {
+          subjectsText = '[เวลา 9:30น. - 10:30น. |ส30232 วิชาหน้าที่พลเมือง| เวลาทำข้อสอบ 60 นาที]';
+          nextSub = '[วิชาต่อไป] : ว31206 วิชาฟิสิกส์ 2'
+        } else if (day == 27 && hours == 10 && minutes >= 30) {
+          subjectsText = '[เวลา 10:30น. - 12:00น. |ว31206 วิชาฟิสิกส์ 2| เวลาทำข้อสอบ 90 นาที]';
+          nextSub = '[ต่อไป] : พักรับประทานอาหารกลางวัน'
+        } else if (day == 27 && hours == 11 && minutes >= 0) {
+          subjectsText = '[เวลา 10:30น. - 12:00น. |ว31206 วิชาฟิสิกส์ 2| เวลาทำข้อสอบ 90 นาที]'; 
+          nextSub = '[ต่อไป] : พักรับประทานอาหารกลางวัน'
+        } else if (day == 27 && hours == 12 && minutes < 0) {
+          subjectsText = '[เวลา 10:30น. - 12:00น. |ว31206 วิชาฟิสิกส์ 2| เวลาทำข้อสอบ 90 นาที]';
+          nextSub = '[ต่อไป] : พักรับประทานอาหารกลางวัน'
+        } else if (day == 27 && hours == 12 && minutes >= 0) {
+          subjectsText = '[เวลา 12:00น. - 13:00น. |พักรับประทานอาหารกลางวัน| เวลา 60 นาที]';
+          nextSub = '[วิชาต่อไป] : ความสามารถในการอ่านและการเขียน'
+        } else if (day == 27 && hours == 13 && minutes >= 0) {
+          subjectsText = '[เวลา 13:00น. - 14:00น. |ความสามารถในการอ่านและการเขียน| เวลาทำข้อสอบ 60 นาที]';
+          nextSub = '[วิชาต่อไป] : อ31102 วิชาภาษาอังกฤษพื้นฐาน'
+        } else if (day == 27 && hours == 14 && minutes >= 0) {
+          subjectsText = '[เวลา 14:00น. - 15:00น. |อ31102 วิชาภาษาอังกฤษพื้นฐาน| เวลาทำข้อสอบ 60 นาที]';
+        } else if (day == 28 && hours == 8 && minutes >= 30) {
+          subjectsText = '[เวลา 8:30น. - 9:30น. |ว31142 วิชาวิทยาศาสตร์ชีวภาพ| เวลาทำข้อสอบ 60 นาที]';
+          nextSub = '[วิชาต่อไป] : จ31222 วิชาภาษาจีน'
+        } else if (day == 28 && hours == 9 && minutes < 30) {
+          subjectsText = '[เวลา 8:30น. - 9:30น. |ว31142 วิชาวิทยาศาสตร์ชีวภาพ| เวลาทำข้อสอบ 60 นาที]';
+          nextSub = '[วิชาต่อไป] : จ31222 วิชาภาษาจีน'
+        } else if (day == 28 && hours == 9 && minutes >= 30) {
+          subjectsText = '[เวลา 9:30น. - 10:30น. |จ31222 วิชาภาษาจีน| เวลาทำข้อสอบ 60 นาที]';
+          nextSub = '[วิชาต่อไป] : ค31202 วิชาคณิตศาสตร์เพิ่มเติม'
+        } else if (day == 28 && hours == 10 && minutes < 30) {
+          subjectsText = '[เวลา 9:30น. - 10:30น. |จ31222 วิชาภาษาจีน| เวลาทำข้อสอบ 60 นาที]';
+          nextSub = '[วิชาต่อไป] : ค31202 วิชาคณิตศาสตร์เพิ่มเติม'
+        } else if (day == 28 && hours == 10 && minutes >= 30) {
+          subjectsText = '[เวลา 10:30น. - 12:00น. |ค31202 วิชาคณิตศาสตร์เพิ่มเติม| เวลาทำข้อสอบ 90 นาที]';
+          nextSub = '[ต่อไป] : พักรับประทานอาหารกลางวัน'
+        } else if (day == 28 && hours == 11 && minutes >= 0) {
+          subjectsText = '[เวลา 10:30น. - 12:00น. |ค31202 วิชาคณิตศาสตร์เพิ่มเติม| เวลาทำข้อสอบ 90 นาที]';
+          nextSub = '[ต่อไป] : พักรับประทานอาหารกลางวัน'
+        } else if (day == 28 && hours == 12 && minutes < 0) {
+          subjectsText = '[เวลา 10:30น. - 12:00น. |ค31202 วิชาคณิตศาสตร์เพิ่มเติม| เวลาทำข้อสอบ 90 นาที]';
+          nextSub = '[ต่อไป] : พักรับประทานอาหารกลางวัน'
+        } else if (day == 28 && hours == 12 && minutes >= 0) {
+          subjectsText = '[เวลา 12:00น. - 13:00น. |พักรับประทานอาหารกลางวัน| เวลา 60 นาที]';
+          nextSub = '[วิชาต่อไป] : ท31102 วิชาภาษาไทย'
+        } else if (day == 28 && hours == 13 && minutes >= 0) {
+          subjectsText = '[เวลา 13:00น. - 14:00น. |ท31102 วิชาภาษาไทย| เวลาทำข้อสอบ 60 นาที]';
+          nextSub = '[วิชาต่อไป] : ว31222 วิชาเคมี 2'
+        } else if (day == 28 && hours == 14 && minutes >= 0) {
+          subjectsText = '[เวลา 14:00น. - 15:30น. |ว31222 วิชาเคมี 2| เวลาทำข้อสอบ 90 นาที]';
+        } else if (day == 28 && hours == 15 && minutes < 30) {
+          subjectsText = '[เวลา 14:00น. - 15:30น. |ว31222 วิชาเคมี 2| เวลาทำข้อสอบ 90 นาที]';
+        } else {
+          subjectsText = 'หมดวิชาที่ต้องสอบวันนี้';
+          nextSub = '[วิชาต่อไป] : ไม่มี '
+        }
+      
+      document.getElementById('subjects').innerHTML = subjectsText;
+      document.getElementById('subjectsNext').innerHTML = nextSub;
+    
+      }
+      
+      setInterval(updateClock, 1000);
+      updateClock();
+
+      document.getElementById('heading_create').innerHTML = heading_createText;
+    </script>
+  </body>
+</html>
